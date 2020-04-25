@@ -32,6 +32,6 @@ public class CurtidaController {
 
     @DeleteMapping("removeCurtida")
     public boolean removeCurtida(@RequestBody Post post){
-        return curtidaService.removeCurtida(curtida);
+        return curtidaService.removeCurtida(post);
     }
 }
