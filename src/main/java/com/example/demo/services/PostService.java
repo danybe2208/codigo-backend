@@ -46,7 +46,7 @@ public class PostService {
         if (postRepository.existsById(post.getId())){
             Post post_update = postRepository.findById(post.getId()).get();
             post_update.setConteudo(post.getConteudo());
-
+            post_update.setCurtidas(post.getCurtidas());
             return postRepository.save(post_update);
         }
         return postRepository.save(post);
