@@ -41,4 +41,14 @@ public class PostService {
     public Post save(Post post) {
         return postRepository.save(post);
     }
+
+    public Post removePost(Post post) {
+        if (postRepository.existsById(post.getId())){
+            Post post_update = postRepository.findById(post.getId()).get();
+            post_update.setConteudo(post.getConteudo());
+
+            return postRepository.save(post_update);
+        }
+        return postRepository.save(post);
+    }
 }
