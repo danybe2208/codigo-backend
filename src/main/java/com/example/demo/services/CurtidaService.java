@@ -37,4 +37,12 @@ public class CurtidaService {
         }
         return false;
     }
+
+    public boolean verificaCurtida(Integer idUsuario, Integer idPost) {
+        Curtida c = curtidaRepository.findByIdPostCurtido(idPost);
+        if (c != null){
+            return c.getIdUsuarioCurtiu().equals(idUsuario);
+        }
+        return false;
+    }
 }
