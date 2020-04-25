@@ -23,4 +23,6 @@ public class Post {
     private Conteudo conteudo;
 
     private String emailAutor;
+
+    private Integer curtidas = 0;
 }
