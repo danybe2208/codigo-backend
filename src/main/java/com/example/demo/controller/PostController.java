@@ -29,9 +29,9 @@ public class PostController {
         return postService.findByEmailAutor(emailAutor);
     }
 
-    @PutMapping("editarPost/{id}")
+    @PutMapping("editarPost")
     public Post updatePost(@RequestBody Post post){
-        return postService.removePost(post);
+        return postService.atualizaPost(post);
     }
 
     @GetMapping("listaPorId/{id}")
