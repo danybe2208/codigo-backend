@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entidade.Curtida;
+import com.example.demo.entidade.Post;
 import com.example.demo.services.CurtidaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class CurtidaController {
     }
 
     @DeleteMapping("removeCurtida")
-    public boolean removeCurtida(@RequestBody Curtida curtida){
+    public boolean removeCurtida(@RequestBody Post post){
         return curtidaService.removeCurtida(curtida);
     }
 }

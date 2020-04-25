@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entidade.Curtida;
+import com.example.demo.entidade.Post;
 import com.example.demo.repositorio.CurtidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,14 @@ public class CurtidaService {
         return curtidaRepository.findById(id).get();
     }
 
-    public boolean removeCurtida(Curtida curtida){
-        if(curtidaRepository.existsById(curtida.getId())){
-            curtidaRepository.deleteById(curtida.getId());
+    public Curtida readByIdPostCurtido(Integer idPostCurtido){
+        return curtidaRepository.findByIdPostCurtido(idPostCurtido);
+    }
+
+    public boolean removeCurtida(Post post){
+        if(readByIdPostCurtido(post.getId()) != null){
+            Curtida c = curtidaRepository.findByIdPostCurtido(post.getId());
+            curtidaRepository.delete(c);
             return true;
         }
         return false;

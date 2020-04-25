@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CurtidaRepository extends JpaRepository<Curtida, Integer> {
+    Curtida findByIdPostCurtido(Integer idPostCurtido);
 }
