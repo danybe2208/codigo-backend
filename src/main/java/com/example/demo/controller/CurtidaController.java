@@ -30,9 +30,9 @@ public class CurtidaController {
         return curtidaService.readById(id);
     }
 
-    @DeleteMapping("removeCurtida")
-    public boolean removeCurtida(@RequestBody Post post){
-        return curtidaService.removeCurtida(post);
+    @DeleteMapping("removeCurtida/{idPost}")
+    public boolean removeCurtida(@PathVariable Integer idPost){
+        return curtidaService.removeCurtida(idPost);
     }
 
     @GetMapping("verificaCurtida/{idUsuario}/{idPost}")
