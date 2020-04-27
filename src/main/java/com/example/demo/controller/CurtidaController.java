@@ -34,8 +34,8 @@ public class CurtidaController {
         return curtidaService.verificaCurtida(idUsuario, idPost);
     }
 
-    @DeleteMapping("removeCurtida/{id}")
-    public void removeCurtida(@PathVariable Integer id){
-        curtidaService.remove(id);
+    @DeleteMapping("removeCurtida/{idUsuario}/{idPost}")
+    public boolean removeCurtida(@PathVariable Integer idUsuario, @PathVariable Integer idPost){
+        return curtidaService.remove(idUsuario, idPost);
     }
 }
