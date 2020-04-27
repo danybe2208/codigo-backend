@@ -23,6 +23,11 @@ public class CurtidaService {
     public Curtida readById(Integer id){
         return curtidaRepository.findById(id).get();
     }
+    
+    public void remove(Integer id) {
+        Curtida curtida = curtidaRepository.findByIdPostCurtido(id);
+        curtidaRepository.delete(curtida);
+    }
 
     public boolean verificaCurtida(Integer idUsuario, Integer idPost) {
         List<Curtida> curtidas = curtidaRepository.findAll();
