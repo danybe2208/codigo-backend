@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entidade.Curtida;
-import com.example.demo.entidade.Post;
 import com.example.demo.services.CurtidaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,11 +27,6 @@ public class CurtidaController {
     @GetMapping("getCurtidaId/{id}")
     public Curtida getCurtidaById(@PathVariable Integer id){
         return curtidaService.readById(id);
-    }
-
-    @DeleteMapping("removeCurtida/{idPost}")
-    public boolean removeCurtida(@PathVariable Integer idPost){
-        return curtidaService.removeCurtida(idPost);
     }
 
     @GetMapping("verificaCurtida/{idUsuario}/{idPost}")
