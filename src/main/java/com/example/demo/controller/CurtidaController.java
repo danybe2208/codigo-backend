@@ -40,7 +40,7 @@ public class CurtidaController {
     }
 
     @GetMapping("testeVerificaCurtida/{idUsuario}/{idPost}")
-    public Curtida testeVerificaCurtida(@PathVariable Integer idUsuario, @PathVariable Integer idPost){
+    public boolean testeVerificaCurtida(@PathVariable Integer idUsuario, @PathVariable Integer idPost){
         return curtidaService.testeVerificaCurtida(idUsuario, idPost);
     }
 }
