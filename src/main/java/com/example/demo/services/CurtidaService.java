@@ -39,7 +39,7 @@ public class CurtidaService {
 
     public boolean testeRemove(Integer idUsuarioCurtiu, Integer idPostCurtido) {
         Curtida curtida = curtidaRepository.findByIdPostCurtidoAndIdUsuarioCurtiu(idPostCurtido, idUsuarioCurtiu);
-        if(curtida == null){
+        if(curtida != null){
             curtidaRepository.delete(curtida);
             return true;
         }
