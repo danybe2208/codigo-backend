@@ -48,4 +48,9 @@ public class CurtidaService {
         }
         return false;
     }
+
+    public Curtida testeVerificaCurtida(Integer idUsuarioCurtiu, Integer idPostCurtido){
+        Curtida curtida = curtidaRepository.findByIdPostCurtidoAndIdUsuarioCurtiu(idPostCurtido, idUsuarioCurtiu);
+        return curtida;
+    }
 }
