@@ -39,8 +39,4 @@ public class CurtidaController {
         return curtidaService.remove(idUsuario, idPost);
     }
 
-    @GetMapping("teste/{idUsuario}/{idPost}")
-    public boolean teste(@PathVariable Integer idUsuario, @PathVariable Integer idPost){
-        return curtidaService.testeRemove(idUsuario, idPost);
-    }
 }
