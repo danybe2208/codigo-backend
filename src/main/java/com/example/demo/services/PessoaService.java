@@ -119,8 +119,8 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
-        pessoa.setSeguindo(idSeguindo.toString() + ",");
-        seguindo.setSeguidores(pessoa.getId().toString() + ",");
+        pessoa.setSeguindo(pessoa.getSeguindo().concat(idSeguindo.toString() + ","));
+        seguindo.setSeguidores(seguindo.getSeguindo().concat(pessoa.getId().toString() + ","));
 
         pessoaRepository.save(pessoa);
         pessoaRepository.save(seguindo);
