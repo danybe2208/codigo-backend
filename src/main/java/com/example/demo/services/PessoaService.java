@@ -6,6 +6,8 @@ import com.example.demo.repositorio.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -82,5 +84,30 @@ public class PessoaService {
             }
         }
         return null;
+    }
+
+
+    public List<Pessoa> getSeguindo(Integer id) {
+        Pessoa pessoa = pessoaRepository.findById(id).get();
+        List<String> seguindo = Arrays.asList(pessoa.getSeguindo().split(","));
+        List<Pessoa> aux = new ArrayList<>();
+        if(seguindo.isEmpty()){
+            for (int i = 0; i < seguindo.size(); i++) {
+                aux.add(pessoaRepository.findById(Integer.parseInt(seguindo.get(i))).get());
+            }
+        }
+        return aux;
+    }
+
+    public List<Pessoa> getSeguidores(Integer id) {
+        Pessoa pessoa = pessoaRepository.findById(id).get();
+        List<String> seguidores = Arrays.asList(pessoa.getSeguidores().split(","));
+        List<Pessoa> aux = new ArrayList<>();
+        if(seguidores.isEmpty()){
+            for (int i = 0; i < seguidores.size(); i++) {
+                aux.add(pessoaRepository.findById(Integer.parseInt(seguidores.get(i))).get());
+            }
+        }
+        return aux;
     }
 }

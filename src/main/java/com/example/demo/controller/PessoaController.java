@@ -48,4 +48,14 @@ public class PessoaController {
     public Pessoa update(@RequestBody Pessoa pessoa) {
         return  pessoaService.updatePessoa(pessoa);
     }
+
+    @GetMapping("seguindo/{id}")
+    public List<Pessoa> seguindo(@PathVariable Integer id) {
+        return pessoaService.getSeguindo(id);
+    }
+
+    @GetMapping("seguidores/{id}")
+    public List<Pessoa> seguidores(@PathVariable Integer id) {
+        return pessoaService.getSeguidores(id);
+    }
 }
