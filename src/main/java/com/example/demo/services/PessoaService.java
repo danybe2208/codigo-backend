@@ -86,28 +86,31 @@ public class PessoaService {
         return null;
     }
 
-
     public List<Pessoa> findSeguindo(Integer id) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
-        List<String> seguindo = Arrays.asList(pessoa.getSeguindo().split(","));
-        List<Pessoa> aux = new ArrayList<>();
-        if(!seguindo.isEmpty()){
+
+        if(!(pessoa.getSeguindo() == null || pessoa.getSeguindo() == "")){
+            List<String> seguindo = Arrays.asList(pessoa.getSeguindo().split(","));
+            List<Pessoa> aux = new ArrayList<>();
             for (int i = 0; i < seguindo.size(); i++) {
                 aux.add(pessoaRepository.findById(Integer.parseInt(seguindo.get(i))).get());
             }
+            return aux;
         }
-        return aux;
+        return null;
     }
 
     public List<Pessoa> findSeguidores(Integer id) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
-        List<String> seguidores = Arrays.asList(pessoa.getSeguidores().split(","));
-        List<Pessoa> aux = new ArrayList<>();
-        if(!seguidores.isEmpty()){
+
+        if(!(pessoa.getSeguidores() == null || pessoa.getSeguidores() == "")){
+            List<String> seguidores = Arrays.asList(pessoa.getSeguidores().split(","));
+            List<Pessoa> aux = new ArrayList<>();
             for (int i = 0; i < seguidores.size(); i++) {
                 aux.add(pessoaRepository.findById(Integer.parseInt(seguidores.get(i))).get());
             }
+            return aux;
         }
-        return aux;
+        return null;
     }
 }
