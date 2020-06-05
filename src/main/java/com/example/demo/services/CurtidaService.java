@@ -23,7 +23,7 @@ public class CurtidaService {
     public Curtida readById(Integer id){
         return curtidaRepository.findById(id).get();
     }
-    
+
     public boolean remove(Integer idUsuarioCurtiu, Integer idPostCurtido) {
         Curtida curtida = curtidaRepository.findByIdPostCurtidoAndIdUsuarioCurtiu(idPostCurtido, idUsuarioCurtiu);
         if(curtida != null){

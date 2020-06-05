@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,4 +26,6 @@ public class Pessoa {
     private Trabalho trabalho;
 
     private String interesses;
+    private List<String> seguindo;
+    private List<String> seguidores;
 }

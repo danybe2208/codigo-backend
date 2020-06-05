@@ -38,5 +38,4 @@ public class CurtidaController {
     public boolean removeCurtida(@PathVariable Integer idUsuario, @PathVariable Integer idPost){
         return curtidaService.remove(idUsuario, idPost);
     }
-
 }
