@@ -88,6 +88,7 @@ public class PessoaService {
 
     public List<Pessoa> findSeguindo(Integer id) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
+        pessoa.setSeguindo("2");
 
         if(!(pessoa.getSeguindo() == null || pessoa.getSeguindo() == "")){
             List<String> seguindo = Arrays.asList(pessoa.getSeguindo().split(","));
@@ -102,6 +103,7 @@ public class PessoaService {
 
     public List<Pessoa> findSeguidores(Integer id) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
+        pessoa.setSeguindo("2");
 
         if(!(pessoa.getSeguidores() == null || pessoa.getSeguidores() == "")){
             List<String> seguidores = Arrays.asList(pessoa.getSeguidores().split(","));
