@@ -59,7 +59,7 @@ public class PessoaController {
         return pessoaService.findSeguidores(id);
     }
 
-    @GetMapping("verificaFollow/{idASeguir}/{id}")
+    @GetMapping("verificaFollow/{id}/{idASeguir}")
     public boolean verificaFollow(@PathVariable Integer id, @PathVariable Integer idASeguir){
         return pessoaService.verificaFollow(id, idASeguir);
     }
