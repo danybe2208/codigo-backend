@@ -6,6 +6,7 @@ import com.example.demo.repositorio.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -112,5 +113,32 @@ public class PessoaService {
             return aux;
         }
         return null;
+    }
+
+    public Pessoa followPessoa(Integer id, Integer idSeguindo) {
+        Pessoa pessoa = pessoaRepository.findById(id).get();
+        Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
+        if (pessoa != null){
+            pessoa.setSeguindo(idSeguindo.toString() + ",");
+        }
+        if (seguindo != null) {
+            seguindo.setSeguidores(id.toString()  + ",");
+        }
+
+        return pessoa;
+    }
+
+    public Pessoa undoFollowPessoa(Integer id, Integer idSeguindo){
+        Pessoa pessoa = pessoaRepository.findById(id).get();
+        Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
+        if (pessoa != null){
+            List<String> aux = Arrays.asList(pessoa.getSeguidores().split(","));
+            aux.remove(aux.indexOf(idSeguindo));
+        }
+        if (seguindo != null) {
+            seguindo.setSeguidores(id.toString()  + ",");
+        }
+
+        return pessoa;
     }
 }
