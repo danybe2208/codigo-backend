@@ -117,12 +117,8 @@ public class PessoaService {
 
     public Pessoa followPessoa(Pessoa pessoa, Integer idSeguindo) {
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
-        if (pessoa != null){
-            pessoa.setSeguindo(idSeguindo.toString() + ",");
-        }
-        if (seguindo != null) {
-            seguindo.setSeguidores(pessoa.getId().toString()  + ",");
-        }
+        pessoa.setSeguindo(idSeguindo.toString() + ",");
+        seguindo.setSeguidores(pessoa.getId().toString() + ",");
 
         return pessoa;
     }
