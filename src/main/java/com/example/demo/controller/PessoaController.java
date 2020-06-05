@@ -61,6 +61,6 @@ public class PessoaController {
 
     @PutMapping("follow/{idSeguindo}")
     public Pessoa follow(@PathVariable Integer idSeguindo, @RequestBody Pessoa pessoa) {
-        return pessoaService.followPessoa(pessoa.getId(), idSeguindo);
+        return pessoaService.followPessoa(pessoa, idSeguindo);
     }
 }
