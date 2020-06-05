@@ -26,6 +26,6 @@ public class Pessoa {
     private Trabalho trabalho;
 
     private String interesses;
-    private List<String> seguindo;
-    private List<String> seguidores;
+    private String seguindo;
+    private String seguidores;
 }
