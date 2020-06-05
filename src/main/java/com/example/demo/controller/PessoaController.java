@@ -51,11 +51,11 @@ public class PessoaController {
 
     @GetMapping("seguindo/{id}")
     public List<Pessoa> seguindo(@PathVariable Integer id) {
-        return pessoaService.getSeguindo(id);
+        return pessoaService.findSeguindo(id);
     }
 
     @GetMapping("seguidores/{id}")
     public List<Pessoa> seguidores(@PathVariable Integer id) {
-        return pessoaService.getSeguidores(id);
+        return pessoaService.findSeguidores(id);
     }
 }
