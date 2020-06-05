@@ -145,4 +145,8 @@ public class PessoaService {
 
         return pessoa;
     }
+
+    public boolean verificaFollow(Integer id, Integer idASeguir) {
+        return pessoaRepository.findById(id).get().getSeguindo().contains(id.toString());
+    }
 }
