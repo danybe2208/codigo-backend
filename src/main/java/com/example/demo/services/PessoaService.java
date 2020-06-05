@@ -151,7 +151,7 @@ public class PessoaService {
         if (pessoa.getSeguindo() != "" && pessoa.getSeguindo() != null){
             String[] aux = pessoa.getSeguindo().split(",");
             for (int i = 0; i < aux.length; i++) {
-                if (aux.equals(idASeguir.toString())) {
+                if (aux[i].equals(idASeguir.toString())) {
                     return true;
                 }
             }
