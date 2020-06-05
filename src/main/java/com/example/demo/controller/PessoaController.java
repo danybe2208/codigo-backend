@@ -60,7 +60,7 @@ public class PessoaController {
     }
 
     @GetMapping("follow/{idSeguindo}/{id}")
-    public Pessoa follow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
+    public List<Pessoa> follow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
         return pessoaService.followPessoa(id, idSeguindo);
     }
 }

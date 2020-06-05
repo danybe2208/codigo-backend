@@ -115,14 +115,21 @@ public class PessoaService {
         return null;
     }
 
-    public Pessoa followPessoa(Integer id, Integer idSeguindo) {
+    public List<Pessoa> followPessoa(Integer id, Integer idSeguindo) {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
         pessoa.setSeguindo(idSeguindo.toString() + ",");
         seguindo.setSeguidores(pessoa.getId().toString() + ",");
 
-        return pessoa;
+        pessoaRepository.save(pessoa);
+        pessoaRepository.save(seguindo);
+
+        List<Pessoa> aux = new ArrayList<>();
+        aux.add(pessoa);
+        aux.add(seguindo);
+
+        return aux;
     }
 
     public Pessoa undoFollowPessoa(Integer id, Integer idSeguindo){
