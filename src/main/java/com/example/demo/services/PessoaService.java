@@ -132,18 +132,26 @@ public class PessoaService {
         return aux;
     }
 
-    public Pessoa undoFollowPessoa(Integer id, Integer idSeguindo){
+    public List<Pessoa> undoFollowPessoa(Integer id, Integer idSeguindo){
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
-        if (pessoa != null){
-            List<String> aux = Arrays.asList(pessoa.getSeguidores().split(","));
-            aux.remove(aux.indexOf(idSeguindo));
-        }
-        if (seguindo != null) {
-            seguindo.setSeguidores(id.toString()  + ",");
-        }
 
-        return pessoa;
+        List<String> aux = Arrays.asList(pessoa.getSeguidores().split(","));
+        aux.remove(aux.indexOf(idSeguindo));
+        pessoa.setSeguidores(aux.toString());
+
+        List<String> aux1 = Arrays.asList(seguindo.getSeguidores().split(","));
+        aux1.remove(aux1.indexOf(idSeguindo));
+        seguindo.setSeguidores(aux1.toString());
+
+        pessoaRepository.save(pessoa);
+        pessoaRepository.save(seguindo);
+
+        List<Pessoa> lista_aux = new ArrayList<>();
+        lista_aux.add(pessoa);
+        lista_aux.add(seguindo);
+
+        return lista_aux;
     }
 
     public boolean verificaFollow(Integer id, Integer idASeguir) {

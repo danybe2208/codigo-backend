@@ -69,4 +69,9 @@ public class PessoaController {
         return pessoaService.followPessoa(id, idSeguindo);
     }
 
+    @DeleteMapping("unfollow/{idSeguindo}/{id}")
+    public List<Pessoa> unfollow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
+        return pessoaService.undoFollowPessoa(id, idSeguindo);
+    }
+
 }
