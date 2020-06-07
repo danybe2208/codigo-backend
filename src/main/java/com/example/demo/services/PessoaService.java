@@ -87,37 +87,6 @@ public class PessoaService {
         return null;
     }
 
-    public List<Pessoa> findSeguindo(Integer id) {
-        return pessoaRepository.findById(id).get().getListaSeguindo();
-    }
-
-    public List<Pessoa> findSeguidores(Integer id) {
-        return pessoaRepository.findById(id).get().getListaSeguidores();
-    }
-
-    public boolean verificaFollow(Integer id, Integer idASeguir) {
-        return pessoaRepository.findById(id).get().getListaSeguindo().contains(pessoaRepository.findById(idASeguir).get());
-    }
-
-    public List<Pessoa> followPessoa(Integer id, Integer idSeguindo) {
-        List<Pessoa> lista = new ArrayList<>();
-        Pessoa pessoa = pessoaRepository.findById(id).get();
-        Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
-
-        pessoa.getListaSeguindo().add(seguindo);
-        pessoaRepository.save(pessoa);
-        lista.add(pessoa);
-
-        seguindo.getListaSeguidores().add(pessoa);
-        pessoaRepository.save(seguindo);
-        lista.add(seguindo);
-
-        return lista;
-    }
-
-    public void undoFollowPessoa(Integer id, Integer idSeguindo){
-
-    }
 
 
 }

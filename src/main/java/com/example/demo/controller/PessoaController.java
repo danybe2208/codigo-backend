@@ -49,26 +49,26 @@ public class PessoaController {
         return  pessoaService.updatePessoa(pessoa);
     }
 
-    @GetMapping("seguindo/{id}")
-    public List<Pessoa> seguindo(@PathVariable Integer id) {
-        return pessoaService.findSeguindo(id);
-    }
-
-    @GetMapping("seguidores/{id}")
-    public List<Pessoa> seguidores(@PathVariable Integer id) {
-        return pessoaService.findSeguidores(id);
-    }
-
-    @GetMapping("verificaFollow/{id}/{idASeguir}")
-    public boolean verificaFollow(@PathVariable Integer id, @PathVariable Integer idASeguir){
-        return pessoaService.verificaFollow(id, idASeguir);
-    }
-
-    @GetMapping("follow/{idSeguindo}/{id}")
-    public List<Pessoa> follow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
-        return pessoaService.followPessoa(id, idSeguindo);
-    }
-
+//    @GetMapping("seguindo/{id}")
+//    public List<Pessoa> seguindo(@PathVariable Integer id) {
+//        return pessoaService.findSeguindo(id);
+//    }
+//
+//    @GetMapping("seguidores/{id}")
+//    public List<Pessoa> seguidores(@PathVariable Integer id) {
+//        return pessoaService.findSeguidores(id);
+//    }
+//
+//    @GetMapping("verificaFollow/{id}/{idASeguir}")
+//    public boolean verificaFollow(@PathVariable Integer id, @PathVariable Integer idASeguir){
+//        return pessoaService.verificaFollow(id, idASeguir);
+//    }
+//
+//    @GetMapping("follow/{idSeguindo}/{id}")
+//    public List<Pessoa> follow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
+//        return pessoaService.followPessoa(id, idSeguindo);
+//    }
+//
 //    @GetMapping("unfollow/{idSeguindo}/{id}")
 //    public List<Pessoa> unfollow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
 //        return pessoaService.undoFollowPessoa(id, idSeguindo);
