@@ -17,6 +17,7 @@ public class Pessoa {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "pessoa_id", nullable = false)
     private Integer id;
 
     private Curriculo curriculo;
