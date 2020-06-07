@@ -104,11 +104,11 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
-        pessoa.getListaSeguindo().add(seguindo);
+        pessoa.getListaSeguindo().add(seguindo.getId());
         pessoaRepository.save(pessoa);
         lista.add(pessoa);
 
-        seguindo.getListaSeguidores().add(pessoa);
+        seguindo.getListaSeguidores().add(pessoa.getId());
         pessoaRepository.save(seguindo);
         lista.add(seguindo);
 
