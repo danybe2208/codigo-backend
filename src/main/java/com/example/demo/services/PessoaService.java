@@ -88,15 +88,15 @@ public class PessoaService {
     }
 
     public List<Pessoa> findSeguindo(Integer id) {
-        return pessoaRepository.findById(id).get().getListaSeguindo();
+        return pessoaRepository.findById(id).get().getSeguindo();
     }
 
     public List<Pessoa> findSeguidores(Integer id) {
-        return pessoaRepository.findById(id).get().getListaSeguidores();
+        return pessoaRepository.findById(id).get().getSeguidores();
     }
 
     public boolean verificaFollow(Integer id, Integer idASeguir) {
-        return pessoaRepository.findById(id).get().getListaSeguindo().contains(pessoaRepository.findById(idASeguir).get());
+        return pessoaRepository.findById(id).get().getSeguindo().contains(pessoaRepository.findById(idASeguir).get());
     }
 
     public List<Pessoa> followPessoa(Integer id, Integer idSeguindo) {
@@ -104,11 +104,11 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
-        pessoa.getListaSeguindo().add(seguindo);
+        pessoa.getSeguindo().add(seguindo);
         pessoaRepository.save(pessoa);
         lista.add(pessoa);
 
-        seguindo.getListaSeguidores().add(pessoa);
+        seguindo.getSeguidores().add(pessoa);
         pessoaRepository.save(seguindo);
         lista.add(seguindo);
 
