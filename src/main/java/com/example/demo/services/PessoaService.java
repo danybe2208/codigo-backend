@@ -132,18 +132,20 @@ public class PessoaService {
         Pessoa seguidor = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idDeixarDeSeguir).get();
 
-        if (!(seguidor.getSeguindo().isEmpty())){
-            seguidor.getSeguindo().remove(idDeixarDeSeguir);
-            pessoaRepository.save(seguidor);
+        if(!(seguidor.getSeguindo().contains(idDeixarDeSeguir))) {
+            if (!(seguidor.getSeguindo().isEmpty())){
+                seguidor.getSeguindo().remove(idDeixarDeSeguir);
+                pessoaRepository.save(seguidor);
 
-            lista.add(seguidor);
-        }
+                lista.add(seguidor);
+            }
 
-        if (!(seguindo.getSeguidores().isEmpty())){
-            seguindo.getSeguidores().remove(id);
-            pessoaRepository.save(seguindo);
+            if (!(seguindo.getSeguidores().isEmpty())){
+                seguindo.getSeguidores().remove(id);
+                pessoaRepository.save(seguindo);
 
-            lista.add(seguindo);
+                lista.add(seguindo);
+            }
         }
 
         return lista;
