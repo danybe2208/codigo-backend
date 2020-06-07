@@ -27,9 +27,15 @@ public class Pessoa {
 
     private String interesses;
 
-    @ManyToOne
+    @ManyToMany
+    @JoinTable(name="pessoa_seguindo", joinColumns=
+            {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
+            {@JoinColumn(name="id_seguindo")})
     private List<Integer> listaSeguindo;
 
-    @ManyToOne
+    @ManyToMany
+    @JoinTable(name="pessoa_seguidor", joinColumns=
+            {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
+            {@JoinColumn(name="id_seguidor")})
     private List<Integer> listaSeguidores;
 }
