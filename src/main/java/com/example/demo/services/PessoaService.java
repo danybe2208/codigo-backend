@@ -104,4 +104,8 @@ public class PessoaService {
         }
         return pessoaSeguidores;
     }
+
+    public boolean verificaFollow(Integer id, Integer idASeguir) {
+        return pessoaRepository.findById(id).get().getSeguindo().contains(pessoaRepository.findById(idASeguir).get());
+    }
 }
