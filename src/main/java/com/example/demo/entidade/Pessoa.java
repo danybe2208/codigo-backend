@@ -27,9 +27,9 @@ public class Pessoa {
 
     private String interesses;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Pessoa.class)
     private List<Pessoa> seguindo;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Pessoa.class)
     private List<Pessoa> seguidores;
 }
