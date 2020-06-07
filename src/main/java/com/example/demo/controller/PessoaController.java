@@ -64,13 +64,13 @@ public class PessoaController {
         return pessoaService.verificaFollow(id, idASeguir);
     }
 
-//    @GetMapping("follow/{idSeguindo}/{id}")
-//    public List<Pessoa> follow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
-//        return pessoaService.followPessoa(id, idSeguindo);
-//    }
-//
-//    @GetMapping("unfollow/{idSeguindo}/{id}")
-//    public List<Pessoa> unfollow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
-//        return pessoaService.undoFollowPessoa(id, idSeguindo);
-//    }
+    @GetMapping("follow/{idSeguir}/{id}")
+    public List<Pessoa> follow(@PathVariable Integer id, @PathVariable Integer idSeguir) {
+        return pessoaService.followPessoa(id, idSeguir);
+    }
+
+    @GetMapping("unfollow/{idSeguindo}/{id}")
+    public List<Pessoa> unfollow(@PathVariable Integer id, @PathVariable Integer idSeguindo) {
+        return pessoaService.undoFollowPessoa(id, idSeguindo);
+    }
 }

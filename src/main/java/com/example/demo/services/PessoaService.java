@@ -106,6 +106,42 @@ public class PessoaService {
     }
 
     public boolean verificaFollow(Integer id, Integer idASeguir) {
-        return pessoaRepository.findById(id).get().getSeguindo().contains(pessoaRepository.findById(idASeguir).get());
+        return pessoaRepository.findById(id).get().getSeguindo().contains(idASeguir);
+    }
+
+    public List<Pessoa> followPessoa(Integer id, Integer idSeguir) {
+        List<Pessoa> lista = new ArrayList<>();
+
+        Pessoa seguidor = pessoaRepository.findById(id).get();
+        seguidor.getSeguindo().add(idSeguir);
+        pessoaRepository.save(seguidor);
+        lista.add(seguidor);
+
+        Pessoa seguindo = pessoaRepository.findById(idSeguir).get();
+        seguindo.getSeguidores().add(id);
+        pessoaRepository.save(seguindo);
+        lista.add(seguindo);
+
+        return lista;
+    }
+
+    public List<Pessoa> undoFollowPessoa(Integer id, Integer idSeguir) {
+        List<Pessoa> lista = new ArrayList<>();
+
+        Pessoa seguidor = pessoaRepository.findById(id).get();
+        if (!(seguidor.getSeguindo().isEmpty())){
+            seguidor.getSeguindo().remove(id);
+            pessoaRepository.save(seguidor);
+        }
+        lista.add(seguidor);
+
+        Pessoa seguindo = pessoaRepository.findById(idSeguir).get();
+        if (!(seguindo.getSeguidores().isEmpty())){
+            seguindo.getSeguidores().remove(id);
+            pessoaRepository.save(seguindo);
+        }
+        lista.add(seguindo);
+
+        return lista;
     }
 }
