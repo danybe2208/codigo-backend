@@ -126,23 +126,23 @@ public class PessoaService {
         return lista;
     }
 
-    public List<Pessoa> undoFollowPessoa(Integer id, Integer idSeguir) {
+    public List<Pessoa> undoFollowPessoa(Integer id, Integer idDeixarDeSeguir) {
         List<Pessoa> lista = new ArrayList<>();
 
         Pessoa seguidor = pessoaRepository.findById(id).get();
-        Pessoa seguindo = pessoaRepository.findById(idSeguir).get();
+        Pessoa seguindo = pessoaRepository.findById(idDeixarDeSeguir).get();
 
-        if(!(seguidor.getSeguindo().contains(idSeguir))){
-            if (!(seguidor.getSeguindo().isEmpty())){
-                seguidor.getSeguindo().remove(id);
-                pessoaRepository.save(seguidor);
-            }
+        if (!(seguidor.getSeguindo().isEmpty())){
+            seguidor.getSeguindo().remove(idDeixarDeSeguir);
+            pessoaRepository.save(seguidor);
+
             lista.add(seguidor);
+        }
 
-            if (!(seguindo.getSeguidores().isEmpty())){
-                seguindo.getSeguidores().remove(idSeguir);
-                pessoaRepository.save(seguindo);
-            }
+        if (!(seguindo.getSeguidores().isEmpty())){
+            seguindo.getSeguidores().remove(id);
+            pessoaRepository.save(seguindo);
+
             lista.add(seguindo);
         }
 
