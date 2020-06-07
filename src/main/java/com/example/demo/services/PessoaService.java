@@ -87,11 +87,11 @@ public class PessoaService {
         return null;
     }
 
-    public List<String> findSeguindo(Integer id) {
+    public List<Pessoa> findSeguindo(Integer id) {
         return pessoaRepository.findById(id).get().getSeguindo();
     }
 
-    public List<String> findSeguidores(Integer id) {
+    public List<Pessoa> findSeguidores(Integer id) {
         return pessoaRepository.findById(id).get().getSeguidores();
     }
 
@@ -104,11 +104,11 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
-        pessoa.getSeguindo().add(seguindo.getId().toString());
+        pessoa.getSeguindo().add(seguindo);
         pessoaRepository.save(pessoa);
         lista.add(pessoa);
 
-        seguindo.getSeguidores().add(pessoa.getId().toString());
+        seguindo.getSeguidores().add(pessoa);
         pessoaRepository.save(seguindo);
         lista.add(seguindo);
 

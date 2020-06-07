@@ -28,8 +28,8 @@ public class Pessoa {
     private String interesses;
 
     @OneToOne
-    private List<String> seguindo;
+    private List<Pessoa> seguindo;
 
     @OneToOne
-    private List<String> seguidores;
+    private List<Pessoa> seguidores;
 }

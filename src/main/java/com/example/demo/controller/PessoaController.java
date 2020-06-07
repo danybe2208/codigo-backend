@@ -50,12 +50,12 @@ public class PessoaController {
     }
 
     @GetMapping("seguindo/{id}")
-    public List<String> seguindo(@PathVariable Integer id) {
+    public List<Pessoa> seguindo(@PathVariable Integer id) {
         return pessoaService.findSeguindo(id);
     }
 
     @GetMapping("seguidores/{id}")
-    public List<String> seguidores(@PathVariable Integer id) {
+    public List<Pessoa> seguidores(@PathVariable Integer id) {
         return pessoaService.findSeguidores(id);
     }
 
