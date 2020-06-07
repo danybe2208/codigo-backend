@@ -136,16 +136,19 @@ public class PessoaService {
         Pessoa pessoa = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
 
-        List<String> aux = Arrays.asList(pessoa.getSeguidores().split(","));
-        aux.remove(aux.indexOf(idSeguindo));
-        pessoa.setSeguidores(aux.toString());
+        if(pessoa.getSeguidores() != null){
+            List<String> aux = Arrays.asList(pessoa.getSeguidores().split(","));
+            aux.remove(aux.indexOf(idSeguindo));
+            pessoa.setSeguidores(aux.toString());
+            pessoaRepository.save(pessoa);
+        }
 
-        List<String> aux1 = Arrays.asList(seguindo.getSeguidores().split(","));
-        aux1.remove(aux1.indexOf(idSeguindo));
-        seguindo.setSeguidores(aux1.toString());
-
-        pessoaRepository.save(pessoa);
-        pessoaRepository.save(seguindo);
+        if(seguindo.getSeguidores() != null){
+            List<String> aux1 = Arrays.asList(seguindo.getSeguidores().split(","));
+            aux1.remove(aux1.indexOf(idSeguindo));
+            seguindo.setSeguidores(aux1.toString());
+            pessoaRepository.save(seguindo);
+        }
 
         List<Pessoa> lista_aux = new ArrayList<>();
         lista_aux.add(pessoa);
