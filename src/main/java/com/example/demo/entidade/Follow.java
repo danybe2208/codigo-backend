@@ -19,6 +19,6 @@ public class Follow {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Integer id;
 
-    private Integer idPessoaSeguindo;
-    private Integer idPessoaSegue;
+    private Integer pessoaSeguindo;
+    private Integer pessoaSegue;
 }

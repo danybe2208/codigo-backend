@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/cientista/")
 @CrossOrigin("*")
-
 public class FollowController {
     @Autowired
     private FollowService followService;

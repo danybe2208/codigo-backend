@@ -14,19 +14,19 @@ public class FollowService {
     private FollowRepository followRepository;
 
     public List<Follow> findSeguindo(Integer id) {
-        return followRepository.findAllByIdPessoaSeguindo(id);
+        return followRepository.findAllByPessoaSeguindo(id);
     }
 
     public List<Follow> findSeguidores(Integer id) {
-        return followRepository.findAllByIdPessoaSeguidores(id);
+        return followRepository.findAllByPessoaSeguidores(id);
     }
 
     public boolean verificaFollow(Integer idSegue, Integer idSeguindo) {
         List<Follow> lista = followRepository.findAll();
         for (Follow follow:
              lista) {
-            if (follow.getIdPessoaSegue().equals(idSegue)
-                    && follow.getIdPessoaSeguindo().equals(idSeguindo)){
+            if (follow.getPessoaSegue().equals(idSegue)
+                    && follow.getPessoaSeguindo().equals(idSeguindo)){
                 return true;
             }
         }
@@ -36,8 +36,8 @@ public class FollowService {
 
     public List<Follow> followPessoa(Integer idSegue, Integer idSeguindo) {
         Follow follow = new Follow();
-        follow.setIdPessoaSegue(idSegue);
-        follow.setIdPessoaSeguindo(idSeguindo);
+        follow.setPessoaSegue(idSegue);
+        follow.setPessoaSeguindo(idSeguindo);
 
         return null;
     }
@@ -46,8 +46,8 @@ public class FollowService {
         List<Follow> lista = followRepository.findAll();
         for (Follow follow:
                 lista) {
-            if (follow.getIdPessoaSegue().equals(idSegue)
-                    && follow.getIdPessoaSeguindo().equals(idSeguindo)){
+            if (follow.getPessoaSegue().equals(idSegue)
+                    && follow.getPessoaSeguindo().equals(idSeguindo)){
                 followRepository.delete(follow);
                 return lista;
             }
