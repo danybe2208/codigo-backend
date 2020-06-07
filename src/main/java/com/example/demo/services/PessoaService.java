@@ -87,86 +87,23 @@ public class PessoaService {
         return null;
     }
 
-    public List<Pessoa> findSeguindo(Integer id) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
+    public void findSeguindo(Integer id) {
 
-        if(!(pessoa.getSeguindo() == null || pessoa.getSeguindo() == "")){
-            List<String> seguindo = Arrays.asList(pessoa.getSeguindo().split(","));
-            List<Pessoa> aux = new ArrayList<>();
-            for (int i = 0; i < seguindo.size(); i++) {
-                aux.add(pessoaRepository.findById(Integer.parseInt(seguindo.get(i))).get());
-            }
-            return aux;
-        }
-        return null;
     }
 
-    public List<Pessoa> findSeguidores(Integer id) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
+    public void findSeguidores(Integer id) {
 
-        if(!(pessoa.getSeguidores() == null || pessoa.getSeguidores() == "")){
-            List<String> seguidores = Arrays.asList(pessoa.getSeguidores().split(","));
-            List<Pessoa> aux = new ArrayList<>();
-            for (int i = 0; i < seguidores.size(); i++) {
-                aux.add(pessoaRepository.findById(Integer.parseInt(seguidores.get(i))).get());
-            }
-            return aux;
-        }
-        return null;
     }
 
-    public List<Pessoa> followPessoa(Integer id, Integer idSeguindo) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
-        Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
+    public void followPessoa(Integer id, Integer idSeguindo) {
 
-        pessoa.setSeguindo(pessoa.getSeguindo().concat(idSeguindo.toString() + ","));
-        seguindo.setSeguidores(seguindo.getSeguindo().concat(pessoa.getId().toString() + ","));
-
-        pessoaRepository.save(pessoa);
-        pessoaRepository.save(seguindo);
-
-        List<Pessoa> aux = new ArrayList<>();
-        aux.add(pessoa);
-        aux.add(seguindo);
-
-        return aux;
     }
 
-    public List<Pessoa> undoFollowPessoa(Integer id, Integer idSeguindo){
-        Pessoa pessoa = pessoaRepository.findById(id).get();
-        Pessoa seguindo = pessoaRepository.findById(idSeguindo).get();
+    public void undoFollowPessoa(Integer id, Integer idSeguindo){
 
-        if(pessoa.getSeguindo() != null){
-            List<String> aux = Arrays.asList(pessoa.getSeguindo().split(","));
-            aux.remove(aux.indexOf(idSeguindo));
-            pessoa.setSeguidores(aux.toString());
-            pessoaRepository.save(pessoa);
-        }
-
-        if(seguindo.getSeguidores() != null){
-            List<String> aux1 = Arrays.asList(seguindo.getSeguidores().split(","));
-            aux1.remove(aux1.indexOf(idSeguindo));
-            seguindo.setSeguidores(aux1.toString());
-            pessoaRepository.save(seguindo);
-        }
-
-        List<Pessoa> lista_aux = new ArrayList<>();
-        lista_aux.add(pessoa);
-        lista_aux.add(seguindo);
-
-        return lista_aux;
     }
 
-    public boolean verificaFollow(Integer id, Integer idASeguir) {
-        Pessoa pessoa = pessoaRepository.findById(id).get();
-        if (pessoa.getSeguindo() != "" && pessoa.getSeguindo() != null){
-            String[] aux = pessoa.getSeguindo().split(",");
-            for (int i = 0; i < aux.length; i++) {
-                if (aux[i].equals(idASeguir.toString())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public void verificaFollow(Integer id, Integer idASeguir) {
+
     }
 }

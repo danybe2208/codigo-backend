@@ -26,6 +26,10 @@ public class Pessoa {
     private Trabalho trabalho;
 
     private String interesses;
-    private String seguindo;
-    private String seguidores;
+
+    @ManyToMany
+    private List<String> listaSeguindo;
+
+    @ManyToMany
+    private List<String> listaSeguidores;
 }
