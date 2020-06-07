@@ -27,9 +27,17 @@ public class Pessoa {
 
     private String interesses;
 
-    @ManyToMany(targetEntity = Pessoa.class)
-    private List<Pessoa> seguindo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seguindo_id", referencedColumnName = "pessoa_id", updatable = false, insertable = false)
+    private Pessoa seguindo;
 
-    @ManyToMany(targetEntity = Pessoa.class)
-    private List<Pessoa> seguidores;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "seguindo")
+    private List<Pessoa> listaSeguindo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seguidores_id", referencedColumnName = "pessoa_id", updatable = false, insertable = false)
+    private Pessoa seguidores;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "seguidores")
+    private List<Pessoa> listaSeguidores;
 }
