@@ -30,12 +30,12 @@ public class Pessoa {
     @ManyToMany
     @JoinTable(name="pessoa_seguindo", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
-            {@JoinColumn(name="id_seguindo")})
-    private List<Integer> listaSeguindo;
+            {@JoinColumn(name="pessoa_id")})
+    private List<Pessoa> listaSeguindo;
 
     @ManyToMany
     @JoinTable(name="pessoa_seguidor", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
-            {@JoinColumn(name="id_seguidor")})
-    private List<Integer> listaSeguidores;
+            {@JoinColumn(name="pessoa_id")})
+    private List<Pessoa> listaSeguidores;
 }
