@@ -31,11 +31,11 @@ public class Pessoa {
     @JoinTable(name="pessoa_seguindo", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
             {@JoinColumn(name="pessoa_id_seguindo")})
-    private List<Pessoa> seguindo;
+    private List<String> seguindo;
 
     @OneToMany
     @JoinTable(name="pessoa_seguidor", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
             {@JoinColumn(name="pessoa_id_seguidores")})
-    private List<Pessoa> seguidores;
+    private List<String> seguidores;
 }
