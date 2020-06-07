@@ -27,9 +27,9 @@ public class Pessoa {
 
     private String interesses;
 
-    @OneToOne
+    @ManyToMany
     private List<Pessoa> seguindo;
 
-    @OneToOne
+    @ManyToMany
     private List<Pessoa> seguidores;
 }
