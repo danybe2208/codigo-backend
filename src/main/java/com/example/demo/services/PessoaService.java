@@ -111,16 +111,17 @@ public class PessoaService {
 
     public List<Pessoa> followPessoa(Integer id, Integer idSeguir) {
         List<Pessoa> lista = new ArrayList<>();
-
         Pessoa seguidor = pessoaRepository.findById(id).get();
-        seguidor.getSeguindo().add(idSeguir);
-        pessoaRepository.save(seguidor);
-        lista.add(seguidor);
-
         Pessoa seguindo = pessoaRepository.findById(idSeguir).get();
-        seguindo.getSeguidores().add(id);
-        pessoaRepository.save(seguindo);
-        lista.add(seguindo);
+
+        if(!(seguidor.getSeguindo().contains(idSeguir))) {
+            seguidor.getSeguindo().add(idSeguir);
+            pessoaRepository.save(seguidor);
+            lista.add(seguidor);
+            seguindo.getSeguidores().add(id);
+            pessoaRepository.save(seguindo);
+            lista.add(seguindo);
+        }
 
         return lista;
     }
@@ -129,18 +130,21 @@ public class PessoaService {
         List<Pessoa> lista = new ArrayList<>();
 
         Pessoa seguidor = pessoaRepository.findById(id).get();
-        if (!(seguidor.getSeguindo().isEmpty())){
-            seguidor.getSeguindo().remove(id);
-            pessoaRepository.save(seguidor);
-        }
-        lista.add(seguidor);
-
         Pessoa seguindo = pessoaRepository.findById(idSeguir).get();
-        if (!(seguindo.getSeguidores().isEmpty())){
-            seguindo.getSeguidores().remove(id);
-            pessoaRepository.save(seguindo);
+
+        if(!(seguidor.getSeguindo().contains(idSeguir))){
+            if (!(seguidor.getSeguindo().isEmpty())){
+                seguidor.getSeguindo().remove(id);
+                pessoaRepository.save(seguidor);
+            }
+            lista.add(seguidor);
+
+            if (!(seguindo.getSeguidores().isEmpty())){
+                seguindo.getSeguidores().remove(idSeguir);
+                pessoaRepository.save(seguindo);
+            }
+            lista.add(seguindo);
         }
-        lista.add(seguindo);
 
         return lista;
     }
