@@ -97,7 +97,7 @@ public class PessoaService {
     }
 
     public List<Pessoa> findSeguidores(Integer id) {
-        List<Integer> listaSeguidores = pessoaRepository.findById(id).get().getSeguindo();
+        List<Integer> listaSeguidores = pessoaRepository.findById(id).get().getSeguidores();
         List<Pessoa> pessoaSeguidores = new ArrayList<>();
         for (int i = 0; i < listaSeguidores.size(); i++) {
             pessoaSeguidores.add(pessoaRepository.findById(listaSeguidores.get(i)).get());
