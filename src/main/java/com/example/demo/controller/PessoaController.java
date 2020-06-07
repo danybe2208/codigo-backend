@@ -49,16 +49,16 @@ public class PessoaController {
         return  pessoaService.updatePessoa(pessoa);
     }
 
-//    @GetMapping("seguindo/{id}")
-//    public List<Pessoa> seguindo(@PathVariable Integer id) {
-//        return pessoaService.findSeguindo(id);
-//    }
-//
-//    @GetMapping("seguidores/{id}")
-//    public List<Pessoa> seguidores(@PathVariable Integer id) {
-//        return pessoaService.findSeguidores(id);
-//    }
-//
+    @GetMapping("seguindo/{id}")
+    public List<Pessoa> seguindo(@PathVariable Integer id) {
+        return pessoaService.findSeguindo(id);
+    }
+
+    @GetMapping("seguidores/{id}")
+    public List<Pessoa> seguidores(@PathVariable Integer id) {
+        return pessoaService.findSeguidores(id);
+    }
+
 //    @GetMapping("verificaFollow/{id}/{idASeguir}")
 //    public boolean verificaFollow(@PathVariable Integer id, @PathVariable Integer idASeguir){
 //        return pessoaService.verificaFollow(id, idASeguir);

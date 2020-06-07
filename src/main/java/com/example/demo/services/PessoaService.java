@@ -87,6 +87,21 @@ public class PessoaService {
         return null;
     }
 
+    public List<Pessoa> findSeguindo(Integer id) {
+        List<Integer> listaSeguindo = pessoaRepository.findById(id).get().getSeguindo();
+        List<Pessoa> pessoaSeguindo = new ArrayList<>();
+        for (int i = 0; i < listaSeguindo.size(); i++) {
+            pessoaSeguindo.add(pessoaRepository.findById(listaSeguindo.get(i)).get());
+        }
+        return pessoaSeguindo;
+    }
 
-
+    public List<Pessoa> findSeguidores(Integer id) {
+        List<Integer> listaSeguidores = pessoaRepository.findById(id).get().getSeguindo();
+        List<Pessoa> pessoaSeguidores = new ArrayList<>();
+        for (int i = 0; i < listaSeguidores.size(); i++) {
+            pessoaSeguidores.add(pessoaRepository.findById(listaSeguidores.get(i)).get());
+        }
+        return pessoaSeguidores;
+    }
 }
