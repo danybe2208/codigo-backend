@@ -27,13 +27,13 @@ public class Pessoa {
 
     private String interesses;
 
-    @ManyToOne
+    @OneToMany
     @JoinTable(name="pessoa_seguindo", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
             {@JoinColumn(name="pessoa_id_seguindo")})
     private List<Pessoa> listaSeguindo;
 
-    @ManyToOne
+    @OneToMany
     @JoinTable(name="pessoa_seguidor", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
             {@JoinColumn(name="pessoa_id_seguidores")})
