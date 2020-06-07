@@ -28,12 +28,12 @@ public class Pessoa {
     private String interesses;
 
     @ElementCollection
-    @CollectionTable(name="seguindo", joinColumns=@JoinColumn(name="id_seguindo"))
+    @CollectionTable(name="segue", joinColumns=@JoinColumn(name="seguindo_id"))
     @Column(name="id_seguindo")
     private List<Integer> seguindo;
 
     @ElementCollection
-    @CollectionTable(name="seguidores", joinColumns=@JoinColumn(name="id_seguidores"))
+    @CollectionTable(name="seguidor", joinColumns=@JoinColumn(name="seguidores_id"))
     @Column(name="id_seguidores")
     private List<Integer> seguidores;
 }
