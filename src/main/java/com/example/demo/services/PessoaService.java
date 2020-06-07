@@ -132,7 +132,7 @@ public class PessoaService {
         Pessoa seguidor = pessoaRepository.findById(id).get();
         Pessoa seguindo = pessoaRepository.findById(idDeixarDeSeguir).get();
 
-        if(!(seguidor.getSeguindo().contains(idDeixarDeSeguir))) {
+        if(seguidor.getSeguindo().contains(idDeixarDeSeguir)) {
             if (!(seguidor.getSeguindo().isEmpty())){
                 seguidor.getSeguindo().remove(idDeixarDeSeguir);
                 pessoaRepository.save(seguidor);
