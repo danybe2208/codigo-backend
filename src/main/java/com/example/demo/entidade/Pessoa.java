@@ -27,15 +27,9 @@ public class Pessoa {
 
     private String interesses;
 
-    @ManyToMany
-    @JoinTable(name="pessoa_seguindo", joinColumns=
-            {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
-            {@JoinColumn(name="pessoa_id_seguindo")})
+    @OneToOne
     private List<String> seguindo;
 
-    @ManyToMany
-    @JoinTable(name="pessoa_seguidor", joinColumns=
-            {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
-            {@JoinColumn(name="pessoa_id_seguidores")})
+    @OneToOne
     private List<String> seguidores;
 }
